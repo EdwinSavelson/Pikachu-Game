@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Pokemon Hollow";
+  src: url("src/PokemonHollowNormal-pyPZ.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Pokemon Solid";
+  src: url("src/PokemonSolidNormal-xyWR.ttf") format("truetype");
+}
+.game-name {
+  text-align: center;
+  padding: 1%;
+  font-family: "Pokemon Solid";
+  font-size: 36px;
+  color: #F6CF57;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  letter-spacing: 4px;
+}
+canvas {
+  border: 2px solid;
+  background-color: aqua;
+  display: flex;
+  margin: auto;
+}
