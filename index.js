@@ -13,6 +13,7 @@ const map = new Image();
 map.src = "src/sprites/mapsheet.png";
 
 
+
 //x is MapFrame Data
 function drawMap(x, mX, mY) {
   ctx.drawImage(map, x.x, x.y, x.width, x.height, mX, mY, x.width, x.height);
@@ -20,7 +21,7 @@ function drawMap(x, mX, mY) {
 
 function mapScroll(mX) {
   //Scrolling Right, create another map frame in front
-  if (mX <= -280 || mX >= 240) {
+  if (mX <= -240 || mX >= 240) {
     mapX = 0;
     drawMap(mapFrames[1], mapX, mapY);
   }
@@ -31,21 +32,6 @@ function mapScroll(mX) {
   if (mX > 0) {
     drawMap(mapFrames[1], mapX - 240, mapY);
   }
-}
-
-//renders given sprite
-function drawCharacter(x) {
-  ctx.drawImage(
-    sprite,
-    x.x,
-    x.y,
-    x.width,
-    x.height,
-    screen.width / 2 - x.width,
-    140,
-    x.width,
-    x.height
-  );
 }
 
 var fps, fpsInterval, startTime, now, then, elapsed;
@@ -63,8 +49,11 @@ window.addEventListener("keydown", function (e) {
     mapX += 20;
   } else if (e.code === "KeyD") {
     //CHARACTER RIGHT
-    mapX -= 20;
-    currentAnimation = running;
+    if(pikachu.animation !== running && currentFrameIndex !== 0){
+      resetFrameLoop();
+    }
+    pikachu.setAnimation(running);
+    mapX -= 2;
   } else if (e.code === "KeyS") {
   } else if (e.code === "KeyW") {
   } else if (e.code === "KeyE") {
@@ -76,8 +65,8 @@ window.addEventListener("keydown", function (e) {
 });
 
 window.addEventListener("keyup", function (e) {
-  if (currentAnimation !== idle) {
-    currentAnimation = idle;
+  if (pikachu.animation !== idle) {
+    pikachu.setAnimation(idle);
     currentFrameIndex = 0;
   } else {
     return;
@@ -96,36 +85,21 @@ function handleAttack(animation) {
   }
 }
 
-//REWRITE DRAW FUNCITOINS
-function drawAttack(x) {
-  ctx.drawImage(
-    sprite,
-    x.x,
-    x.y,
-    x.width,
-    x.height,
-    screen.width / 2 - 40,
-    -20,
-    x.width,
-    x.height
-  );
-}
 
 let currentFrameIndex = 0;
-//takes in an animation style and returns a frame number
-function handleFrameState(animation) {
-  if (currentFrameIndex < animation.length - 1) {
-    currentFrameIndex++;
-    return animation[currentFrameIndex];
-  } else if (currentFrameIndex >= animation.length - 1) {
-    currentFrameIndex = 0;
-    return animation[currentFrameIndex];
-  }
+
+
+function resetFrameLoop(){
+  currentFrameIndex = 0;
 }
 
 let mapX = 0;
 let mapY = 0;
 let currentAnimation = idle;
+
+let pikachu = new Sprite(sprite, idle);
+let thunderbolt = new Sprite(sprite, thunderbolt);
+
 function run() {
   window.requestAnimationFrame(run);
 
@@ -140,9 +114,11 @@ function run() {
     ctx.clearRect(0, 0, 200, 200); // clear canvas
     drawMap(mapFrames[1], mapX, mapY);
     mapScroll(mapX);
-    drawCharacter(
-      currentAnimation[handleFrameState(currentAnimation.frameLoop)]
-    );
+
+    pikachu.draw(75,150, currentFrameIndex);
+    currentFrameIndex = pikachu.getFrameNumber();
+    console.log(mapX);
+
   }
 }
 
