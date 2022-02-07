@@ -1,4 +1,6 @@
 // ANIMATION SPRITESHEET DATA
+
+//PIKACHU ANIMATIONS
 const idle = {
   1: { x: 27, y: 17, width: 36, height: 40 },
   2: { x: 70, y: 16, width: 30, height: 40 },
@@ -28,6 +30,8 @@ const thunderbolt = {
   frameLoop: [1, 1, 2, 2, 3, 3, 2, 2],
 };
 
+
+//ATTACK SPRITE
 // LIGHTENING FOR THUNDERBOLT
 const lightening = {
   1: { x: 353, y: 248, width: 35, height: 211 },
@@ -37,6 +41,9 @@ const lightening = {
   5: { x: 289, y: 15, width: 32, height: 221 },
   frameLoop: [1, 2, 3, 4, 5],
 };
+
+
+
 
 //BACKGROUND IMAGES
 const mapFrames = {

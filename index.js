@@ -12,8 +12,6 @@ sprite.src = "src/sprites/pikachu-sprites.png";
 const map = new Image();
 map.src = "src/sprites/mapsheet.png";
 
-
-
 //x is MapFrame Data
 function drawMap(x, mX, mY) {
   ctx.drawImage(map, x.x, x.y, x.width, x.height, mX, mY, x.width, x.height);
@@ -46,50 +44,53 @@ function startAnimating(fps) {
 window.addEventListener("keydown", function (e) {
   if (e.code === "KeyA") {
     //CHARACTER LEFT
+
     mapX += 20;
   } else if (e.code === "KeyD") {
     //CHARACTER RIGHT
-    if(pikachu.animation !== running && currentFrameIndex !== 0){
-      resetFrameLoop();
-    }
+
     pikachu.setAnimation(running);
     mapX -= 2;
+
   } else if (e.code === "KeyS") {
+
   } else if (e.code === "KeyW") {
+
   } else if (e.code === "KeyE") {
-    currentAnimation = wave;
+    //CHARACTER WAVE
+    pikachu.setAnimation(wave);
+
   } else if (e.code === "KeyR") {
-    currentAnimation = thunderbolt;
-    drawAttack(lightening[handleAttack(lightening.frameLoop)]);
+    thunderAttack.draw(screen.width / 2 - 40);
+    console.log("fuck");
+    //   -20, lightening);
+    // drawAttack(lightening[handleAttack(lightening.frameLoop)]);
   }
 });
 
 window.addEventListener("keyup", function (e) {
   if (pikachu.animation !== idle) {
     pikachu.setAnimation(idle);
-    currentFrameIndex = 0;
   } else {
     return;
   }
 });
 
-//REWRITE FRAME HANDLING
-let attackFrameIndex = 0;
-function handleAttack(animation) {
-  if (attackFrameIndex < animation.length - 1) {
-    attackFrameIndex++;
-    return animation[attackFrameIndex];
-  } else if (attackFrameIndex >= animation.length - 1) {
-    attackFrameIndex = 0;
-    return animation[attackFrameIndex];
-  }
-}
+// //REWRITE FRAME HANDLING
+// let attackFrameIndex = 0;
+// function handleAttack(animation) {
+//   if (attackFrameIndex < animation.length - 1) {
+//     attackFrameIndex++;
+//     return animation[attackFrameIndex];
+//   } else if (attackFrameIndex >= animation.length - 1) {
+//     attackFrameIndex = 0;
+//     return animation[attackFrameIndex];
+//   }
+// }
 
+// let currentFrameIndex = 0;
 
-let currentFrameIndex = 0;
-
-
-function resetFrameLoop(){
+function resetFrameLoop() {
   currentFrameIndex = 0;
 }
 
@@ -98,7 +99,7 @@ let mapY = 0;
 let currentAnimation = idle;
 
 let pikachu = new Sprite(sprite, idle);
-let thunderbolt = new Sprite(sprite, thunderbolt);
+let thunderAttack = new Sprite(sprite, lightening);
 
 function run() {
   window.requestAnimationFrame(run);
@@ -115,9 +116,7 @@ function run() {
     drawMap(mapFrames[1], mapX, mapY);
     mapScroll(mapX);
 
-    pikachu.draw(75,150, currentFrameIndex);
-    currentFrameIndex = pikachu.getFrameNumber();
-    console.log(mapX);
+    pikachu.draw(75, 150);
 
   }
 }

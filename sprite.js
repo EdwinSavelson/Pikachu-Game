@@ -6,11 +6,11 @@ class Sprite {
     this.currentFrame = 0;
   }
 
-  draw(x, y, frameNumber) {
+  draw(x, y) {
     this.xPos = x;
     this.yPos = y;
-    this.currentFrame = frameNumber;
     this.data = this.animation[this.animation.frameLoop[this.currentFrame]];
+
     ctx.drawImage(
       this.sprite,
       this.data.x,
@@ -22,7 +22,7 @@ class Sprite {
       this.data.width,
       this.data.height
     );
-    this.currentFrame = this.advanceFrame(frameNumber);
+    this.currentFrame = this.advanceFrame(this.currentFrame);
   }
 
   //cF = current frame
@@ -36,11 +36,18 @@ class Sprite {
     }
   }
 
-  setAnimation(animation) {
-    this.animation = animation;
+  setAnimation(newAnimation) {
+    if(this.animation !== newAnimation  && this.currentFrame !== 0){
+     this.resetFrameNumber();
+    }
+    this.animation = newAnimation;
   }
 
   getFrameNumber() {
     return this.currentFrame;
+  }
+
+  resetFrameNumber(){
+    this.currentFrame = 0;
   }
 }
