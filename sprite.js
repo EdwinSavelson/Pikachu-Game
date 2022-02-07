@@ -4,6 +4,9 @@ class Sprite {
     this.sprite = sprite;
     this.animation = defaultAnimation;
     this.currentFrame = 0;
+    //for attacks and temporary things
+    this.drawn = false;
+    this.interval;
   }
 
   draw(x, y) {

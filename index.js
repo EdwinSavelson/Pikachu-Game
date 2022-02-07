@@ -32,15 +32,6 @@ function mapScroll(mX) {
   }
 }
 
-var fps, fpsInterval, startTime, now, then, elapsed;
-
-function startAnimating(fps) {
-  fpsInterval = 1000 / fps;
-  then = Date.now();
-  startTime = then;
-  run();
-}
-
 window.addEventListener("keydown", function (e) {
   if (e.code === "KeyA") {
     //CHARACTER LEFT
@@ -51,44 +42,32 @@ window.addEventListener("keydown", function (e) {
 
     pikachu.setAnimation(running);
     mapX -= 2;
-
   } else if (e.code === "KeyS") {
-
   } else if (e.code === "KeyW") {
-
   } else if (e.code === "KeyE") {
     //CHARACTER WAVE
     pikachu.setAnimation(wave);
-
   } else if (e.code === "KeyR") {
-    thunderAttack.draw(screen.width / 2 - 40);
-    console.log("fuck");
-    //   -20, lightening);
-    // drawAttack(lightening[handleAttack(lightening.frameLoop)]);
+    //CHARACTER ATTACK
+    pikachu.setAnimation(thunderbolt);
+    if(thunderAttack.drawn === false){
+      thunderAttack.interval = setInterval(()=>{
+        thunderAttack.draw(screen.width / 2 - 30, -17);
+      },100);
+      thunderAttack.drawn = true;
+    }
   }
 });
 
 window.addEventListener("keyup", function (e) {
+  clearInterval(thunderAttack.interval);
+  thunderAttack.drawn = false;
   if (pikachu.animation !== idle) {
     pikachu.setAnimation(idle);
   } else {
     return;
   }
 });
-
-// //REWRITE FRAME HANDLING
-// let attackFrameIndex = 0;
-// function handleAttack(animation) {
-//   if (attackFrameIndex < animation.length - 1) {
-//     attackFrameIndex++;
-//     return animation[attackFrameIndex];
-//   } else if (attackFrameIndex >= animation.length - 1) {
-//     attackFrameIndex = 0;
-//     return animation[attackFrameIndex];
-//   }
-// }
-
-// let currentFrameIndex = 0;
 
 function resetFrameLoop() {
   currentFrameIndex = 0;
@@ -100,6 +79,15 @@ let currentAnimation = idle;
 
 let pikachu = new Sprite(sprite, idle);
 let thunderAttack = new Sprite(sprite, lightening);
+
+var fps, fpsInterval, startTime, now, then, elapsed;
+
+function startAnimating(fps) {
+  fpsInterval = 1000 / fps;
+  then = Date.now();
+  startTime = then;
+  run();
+}
 
 function run() {
   window.requestAnimationFrame(run);
@@ -117,8 +105,7 @@ function run() {
     mapScroll(mapX);
 
     pikachu.draw(75, 150);
-
   }
 }
 
-startAnimating(5);
+startAnimating(10);
