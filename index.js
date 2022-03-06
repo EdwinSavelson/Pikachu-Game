@@ -32,36 +32,37 @@ function mapScroll(mX) {
   }
 }
 
+
+//===============MOVEMENTS==========
 window.addEventListener("keydown", function (e) {
   if (e.code === "KeyA") {
     //CHARACTER LEFT
+    pikachu.moveLeft(5);
 
     mapX += 20;
   } else if (e.code === "KeyD") {
     //CHARACTER RIGHT
 
     pikachu.setAnimation(running);
-    mapX -= 2;
+    mapX -= 20;
   } else if (e.code === "KeyS") {
+    //CHARACTER DOWN
+    pikachu.moveDown(5);
   } else if (e.code === "KeyW") {
+    //CHARACTER UP
+    pikachu.moveUp(5);
   } else if (e.code === "KeyE") {
     //CHARACTER WAVE
     pikachu.setAnimation(wave);
   } else if (e.code === "KeyR") {
     //CHARACTER ATTACK
     pikachu.setAnimation(thunderbolt);
-    if(thunderAttack.drawn === false){
-      thunderAttack.interval = setInterval(()=>{
-        thunderAttack.draw(screen.width / 2 - 30, -17);
-      },100);
-      thunderAttack.drawn = true;
-    }
+    thunderAttack.startAttack();
   }
 });
 
 window.addEventListener("keyup", function (e) {
-  clearInterval(thunderAttack.interval);
-  thunderAttack.drawn = false;
+  thunderAttack.endAttack();
   if (pikachu.animation !== idle) {
     pikachu.setAnimation(idle);
   } else {
@@ -77,8 +78,8 @@ let mapX = 0;
 let mapY = 0;
 let currentAnimation = idle;
 
-let pikachu = new Sprite(sprite, idle);
-let thunderAttack = new Sprite(sprite, lightening);
+let pikachu = new Sprite(sprite, 75, 150, idle);
+let thunderAttack = new Attack(sprite, screen.width / 2 - 30, -17, lightening);
 
 var fps, fpsInterval, startTime, now, then, elapsed;
 
@@ -104,7 +105,7 @@ function run() {
     drawMap(mapFrames[1], mapX, mapY);
     mapScroll(mapX);
 
-    pikachu.draw(75, 150);
+    pikachu.draw();
   }
 }
 
