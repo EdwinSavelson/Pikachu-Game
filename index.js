@@ -1,88 +1,41 @@
 const ctx = document.getElementById("canvas1").getContext("2d");
 
 const screen = {
-  width: 200,
-  height: 200,
+  width: 240,
+  height: 240,
 };
 
-//STOPPED HERE
-//LOADED ASCYNC CHANGE FOR DEPLOYMENT CHECK BOOKMARKS IN GAME DEV
-const sprite = new Image();
-sprite.src = "src/sprites/pikachu-sprites.png";
+
+// IMAGE FILES
 const map = new Image();
 map.src = "src/sprites/mapsheet.png";
+const newIdle = new Image();
+newIdle.src = "src/sprites/fatidle.png";
+const newWalking = new Image();
+newWalking.src = "src/sprites/walking.png";
+const newJump = new Image();
+newJump.src = "src/sprites/jump.png";
+const psyduckpic = new Image();
+psyduckpic.src = "src/sprites/PSYDUCK.png";
 
-//x is MapFrame Data
-function drawMap(x, mX, mY) {
-  ctx.drawImage(map, x.x, x.y, x.width, x.height, mX, mY, x.width, x.height);
-}
-
-function mapScroll(mX) {
-  //Scrolling Right, create another map frame in front
-  if (mX <= -240 || mX >= 240) {
-    mapX = 0;
-    drawMap(mapFrames[1], mapX, mapY);
-  }
-  if (mX < -20) {
-    drawMap(mapFrames[1], mapX + 240, mapY);
-  }
-  //Scrolling left create another map frame behind
-  if (mX > 0) {
-    drawMap(mapFrames[1], mapX - 240, mapY);
-  }
-}
-
-
-//===============MOVEMENTS==========
-window.addEventListener("keydown", function (e) {
-  if (e.code === "KeyA") {
-    //CHARACTER LEFT
-    pikachu.moveLeft(5);
-
-    mapX += 20;
-  } else if (e.code === "KeyD") {
-    //CHARACTER RIGHT
-
-    pikachu.setAnimation(running);
-    mapX -= 20;
-  } else if (e.code === "KeyS") {
-    //CHARACTER DOWN
-    pikachu.moveDown(5);
-  } else if (e.code === "KeyW") {
-    //CHARACTER UP
-    pikachu.moveUp(5);
-  } else if (e.code === "KeyE") {
-    //CHARACTER WAVE
-    pikachu.setAnimation(wave);
-  } else if (e.code === "KeyR") {
-    //CHARACTER ATTACK
-    pikachu.setAnimation(thunderbolt);
-    thunderAttack.startAttack();
-  }
-});
-
-window.addEventListener("keyup", function (e) {
-  thunderAttack.endAttack();
-  if (pikachu.animation !== idle) {
-    pikachu.setAnimation(idle);
-  } else {
-    return;
-  }
-});
+var mapLeft = false;
+var mapRight = false;
 
 function resetFrameLoop() {
   currentFrameIndex = 0;
 }
 
+//----------------INITIALIZE GAME-------------------//
 let mapX = 0;
 let mapY = 0;
-let currentAnimation = idle;
 
-let pikachu = new Sprite(sprite, 75, 150, idle);
-let thunderAttack = new Attack(sprite, screen.width / 2 - 30, -17, lightening);
+let input = new InputHandler();
+let background = new Background();
+
+let pikachu = new Sprite(newIdle, 35, 160, newIdleData);
+let psyduck = new Sprite(psyduckpic, 150, 145, psyduckData);
 
 var fps, fpsInterval, startTime, now, then, elapsed;
-
 function startAnimating(fps) {
   fpsInterval = 1000 / fps;
   then = Date.now();
@@ -92,21 +45,17 @@ function startAnimating(fps) {
 
 function run() {
   window.requestAnimationFrame(run);
-
   now = Date.now();
   elapsed = now - then;
-
   // if enough time has elapsed, draw the next frame
-
   if (elapsed > fpsInterval) {
     then = now - (elapsed % fpsInterval);
 
     ctx.clearRect(0, 0, 200, 200); // clear canvas
-    drawMap(mapFrames[1], mapX, mapY);
-    mapScroll(mapX);
+    background.mapScroll(mapX);
 
     pikachu.draw();
+    psyduck.draw();
   }
 }
-
 startAnimating(10);

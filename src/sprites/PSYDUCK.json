@@ -1,0 +1,56 @@
+{ "frames": [
+   {
+    "filename": "Sprite-0014 0.",
+    "frame": { "x": 0, "y": 0, "w": 34, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 44 },
+    "sourceSize": { "w": 34, "h": 44 },
+    "duration": 100
+   },
+   {
+    "filename": "Sprite-0014 1.",
+    "frame": { "x": 34, "y": 0, "w": 34, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 44 },
+    "sourceSize": { "w": 34, "h": 44 },
+    "duration": 100
+   },
+   {
+    "filename": "Sprite-0014 2.",
+    "frame": { "x": 68, "y": 0, "w": 34, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 44 },
+    "sourceSize": { "w": 34, "h": 44 },
+    "duration": 100
+   },
+   {
+    "filename": "Sprite-0014 3.",
+    "frame": { "x": 102, "y": 0, "w": 34, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 44 },
+    "sourceSize": { "w": 34, "h": 44 },
+    "duration": 100
+   },
+   {
+    "filename": "Sprite-0014 4.",
+    "frame": { "x": 136, "y": 0, "w": 34, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 44 },
+    "sourceSize": { "w": 34, "h": 44 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.34.1-arm64",
+  "image": "PSYDUCK.png",
+  "format": "RGBA8888",
+  "size": { "w": 170, "h": 44 },
+  "scale": "1"
+ }
+}

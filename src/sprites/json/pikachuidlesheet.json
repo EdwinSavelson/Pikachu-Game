@@ -1,0 +1,82 @@
+{ "frames": [
+   {
+    "filename": "pikachuidlesheet 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 51, "h": 50 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 51, "h": 50 },
+    "sourceSize": { "w": 51, "h": 50 },
+    "duration": 100
+   },
+   {
+    "filename": "pikachuidlesheet 1.aseprite",
+    "frame": { "x": 51, "y": 0, "w": 51, "h": 50 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 51, "h": 50 },
+    "sourceSize": { "w": 51, "h": 50 },
+    "duration": 100
+   },
+   {
+    "filename": "pikachuidlesheet 2.aseprite",
+    "frame": { "x": 102, "y": 0, "w": 51, "h": 50 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 51, "h": 50 },
+    "sourceSize": { "w": 51, "h": 50 },
+    "duration": 100
+   },
+   {
+    "filename": "pikachuidlesheet 3.aseprite",
+    "frame": { "x": 153, "y": 0, "w": 51, "h": 50 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 51, "h": 50 },
+    "sourceSize": { "w": 51, "h": 50 },
+    "duration": 100
+   },
+   {
+    "filename": "pikachuidlesheet 4.aseprite",
+    "frame": { "x": 204, "y": 0, "w": 51, "h": 50 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 51, "h": 50 },
+    "sourceSize": { "w": 51, "h": 50 },
+    "duration": 100
+   },
+   {
+    "filename": "pikachuidlesheet 5.aseprite",
+    "frame": { "x": 255, "y": 0, "w": 51, "h": 50 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 51, "h": 50 },
+    "sourceSize": { "w": 51, "h": 50 },
+    "duration": 100
+   },
+   {
+    "filename": "pikachuidlesheet 6.aseprite",
+    "frame": { "x": 306, "y": 0, "w": 51, "h": 50 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 51, "h": 50 },
+    "sourceSize": { "w": 51, "h": 50 },
+    "duration": 100
+   },
+   {
+    "filename": "pikachuidlesheet 7.aseprite",
+    "frame": { "x": 357, "y": 0, "w": 51, "h": 50 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 51, "h": 50 },
+    "sourceSize": { "w": 51, "h": 50 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.34.1-arm64",
+  "format": "RGBA8888",
+  "size": { "w": 408, "h": 50 },
+  "scale": "1"
+ }
+}

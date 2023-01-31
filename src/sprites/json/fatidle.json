@@ -1,0 +1,29 @@
+{ "frames": [
+   {
+    "filename": "Sprite-0015 0.",
+    "frame": { "x": 0, "y": 0, "w": 37, "h": 38 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 37, "h": 38 },
+    "sourceSize": { "w": 37, "h": 38 },
+    "duration": 100
+   },
+   {
+    "filename": "Sprite-0015 1.",
+    "frame": { "x": 37, "y": 0, "w": 37, "h": 38 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 37, "h": 38 },
+    "sourceSize": { "w": 37, "h": 38 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.34.1-arm64",
+  "image": "fatidle.png",
+  "format": "RGBA8888",
+  "size": { "w": 74, "h": 38 },
+  "scale": "1"
+ }
+}
