@@ -5,18 +5,17 @@ const screen = {
   height: 240,
 };
 
-
 // IMAGE FILES
 const map = new Image();
 map.src = "src/sprites/mapsheet.png";
-const newIdle = new Image();
-newIdle.src = "src/sprites/fatidle.png";
-const newWalking = new Image();
-newWalking.src = "src/sprites/walking.png";
-const newJump = new Image();
-newJump.src = "src/sprites/jump.png";
-const psyduckpic = new Image();
-psyduckpic.src = "src/sprites/PSYDUCK.png";
+// const newIdle = new Image();
+// newIdle.src = "src/sprites/fatidle.png";
+// const newWalking = new Image();
+// newWalking.src = "src/sprites/walking.png";
+// const newJump = new Image();
+// newJump.src = "src/sprites/jump.png";
+// const psyduckpic = new Image();
+// psyduckpic.src = "src/sprites/PSYDUCK.png";
 
 var mapLeft = false;
 var mapRight = false;
@@ -32,8 +31,8 @@ let mapY = 0;
 let input = new InputHandler();
 let background = new Background();
 
-let pikachu = new Sprite(newIdle, 35, 160, newIdleData);
-let psyduck = new Sprite(psyduckpic, 150, 145, psyduckData);
+let pikachu = new Player(pikachuData, 35, 160);
+let psyduck = new Sprite(psyduckData, 120, 150);
 
 var fps, fpsInterval, startTime, now, then, elapsed;
 function startAnimating(fps) {
@@ -45,6 +44,8 @@ function startAnimating(fps) {
 
 function run() {
   window.requestAnimationFrame(run);
+  pikachu.update(input);
+
   now = Date.now();
   elapsed = now - then;
   // if enough time has elapsed, draw the next frame
@@ -53,9 +54,9 @@ function run() {
 
     ctx.clearRect(0, 0, 200, 200); // clear canvas
     background.mapScroll(mapX);
-
     pikachu.draw();
     psyduck.draw();
+    
   }
 }
 startAnimating(10);

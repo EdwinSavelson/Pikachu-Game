@@ -2,11 +2,26 @@ class Sprite {
 
     //JUST ADDED STARTINGX/STARTING Y, CONSIDER CHANGING TO ANOTHER CLASS
     //MAKE PIKACHU CLASS AND OTHER CHARACTER EXTENDS CLASS
-    constructor(sprite, startingX, startingY, defaultAnimation) {
+    // constructor(sprite, startingX, startingY, defaultAnimation) {
+    //     this.xPos = startingX;
+    //     this.yPos = startingY;
+    //     this.sprite = sprite;
+    //     this.animation = defaultAnimation;
+    //     this.currentFrame = 0;
+    //     //for attacks and temporary things
+    //     this.drawn = false;
+    //     this.interval;
+    //     this.data = this.animation.frames[this.currentFrame].frame;
+    //     this.width = this.data.w;
+    //     this.height = this.data.h;
+    // }
+    constructor(spriteData, startingX, startingY) {
+        this.spriteData = spriteData;
         this.xPos = startingX;
         this.yPos = startingY;
-        this.sprite = sprite;
-        this.animation = defaultAnimation;
+        this.sprite = new Image();
+        this.sprite.src = spriteData.default.sprite;
+        this.animation = spriteData.default;
         this.currentFrame = 0;
         //for attacks and temporary things
         this.drawn = false;
@@ -15,6 +30,7 @@ class Sprite {
         this.width = this.data.w;
         this.height = this.data.h;
     }
+
 
     draw() {
 
@@ -47,7 +63,7 @@ class Sprite {
     }
 
     setSpriteSheet(sS) {
-        this.sprite = sS;
+        this.sprite.src = sS;
     }
     setAnimation(newAnimation) {
         if (this.animation !== newAnimation && this.currentFrame !== 0) {
@@ -105,14 +121,22 @@ class Sprite {
 // }
 
 class Player extends Sprite {
+constructor(spriteData, startingX, startingY){
+    super(spriteData, startingX, startingY);
+};
+   update(input) {
+        if (input.keys.indexOf("KeyD") > -1) {
 
-    constructor(sprite, startingX, startingY, defaultAnimation) {
-        super(sprite, startingX, startingY, defaultAnimation);
-    }
-
-    update(input){
-        if(input.keys.indexOf()){
-            
+            //! REWRITE SET SPRITE
+            this.setSpriteSheet(this.spriteData.walking.sprite);
+            this.setAnimation(this.spriteData.walking);
+            mapLeft = true;
+        }
+        if (input.keys.length === 0) {
+            this.setAnimation(this.spriteData.default);
+            this.setSpriteSheet(this.spriteData.default.sprite);
+            this.setAnimation(this.spriteData.default);
+            mapLeft = false;
         }
     }
 
