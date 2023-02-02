@@ -31,7 +31,7 @@ let mapY = 0;
 let input = new InputHandler();
 let background = new Background();
 
-let pikachu = new Player(pikachuData, 35, 160);
+let pikachu = new Player(pikachuData, 45, 160);
 let psyduck = new Sprite(psyduckData, 120, 150);
 
 var fps, fpsInterval, startTime, now, then, elapsed;
