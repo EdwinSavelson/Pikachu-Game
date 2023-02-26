@@ -1,6 +1,7 @@
 # Pikachu Game*(In Progress)*
+## <a href = "https://edwinsavelson.github.io/Pikachu-Game/">Live Demo</a>
 ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/20752840/221386760-f6a723be-cced-43a5-af52-a660c87d2c1e.gif)
-## About:
+# About:
 Written with Vanilla JavaScript, using ES6 Class Syntax.
 I started this project for fun then figured it would be a great project to demonstrate knowledge of **OOP Principles**. 
 
