@@ -55,7 +55,7 @@ function run() {
     ctx.clearRect(0, 0, 200, 200); // clear canvas
     background.mapScroll(mapX);
     pikachu.draw();
-    psyduck.draw();
+    // psyduck.draw();
     
   }
 }
