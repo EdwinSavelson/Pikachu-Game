@@ -3,8 +3,6 @@
 ## About:
 Written with Vanilla JavaScript, using ES6 Class Syntax.
 I started this project for fun then figured it would be a great project to demonstrate knowledge of **OOP Principles**. 
-## Goal:
-
 
 # Process
 Generally, the game is seperated into:
